@@ -11787,8 +11787,8 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>A good way to discover patterns in textual data is to classify the data and analyse the classes to find hidden trends. In the given dataset, given that the data contains questions asked by students, my basic intuition was to classify the data acording to the subject or field of science from which the question was asked. For example, the question 'How many stars are in the sky?' can be classified as an Astronomy question, 'Which is the biggest animal in Ocean?' is most certainly a Biology question, so on and so forth.</p>
 <p>After careful analysis and reading through the entire datatset multiple times to get a general feel of the distribuion of questions, I discovered another underlying criteria for classification - some questions were being asked to fill in gaps in the knowledge of students, for example 'Where do petrol and diesel come from?' or 'Which is the coldest place?'. I categorized these questions as 'Comprehension' type quesions, since they have a single factual answer from the science curriculum being taught to these students. But a good chunk of questions in the dataset were not Comprehension type, but were more exploratory in nature, questions that were clearly rooted in curiosity and application of existing knowledge. I categorized these questions as 'Curiosity' type.</p>
-<p>This classification criteria could provide a high level view of the scientific temperament and understanding among students. It could also help guage the effectiveness of the current curriculum and teaching methodology being used at these schools. For example, if majority of questions asked by students after a session or class are 'Comprehension' type questions, it would be safe to say that we need to improve or even rethink the teaching strategy or course content. It could also help point out specific areas of the course that might need improvement - for example, if a lot of Comprehension type questions are from the Biology section, it could indicate that the course material might need tweaking or even that the instructor for that particular session could improve his/her method.</p>
-<p>An attached pdf document titled 'categorized_questions.pdf' contains the entire dataset classified into Comprehension and Curiosity type questions, as well into fields of science they belong to. Another file, titled data.tsv contains the same labelled data in a format that's easily readable by machine learning libraries such as pandas, which makes it easy to work with datasets. We can load up this file to get some insight into our newly classified data.</p>
+<p>This classification criteria could provide a high level view of the scientific temperament and understanding among students. It could also help guage the effectiveness of the current curriculum and teaching methodology being used at these schools. For example, if majority of questions asked by students after a session or class are 'Comprehension' type questions, it would be safe to say that we need to improve or even rethink the teaching strategy or the course content. It could also help point out specific areas of the course that might need improvement - for example, if a lot of Comprehension type questions are from the Biology section, it could indicate that the course material might need tweaking or even that the instructor for that particular session could improve his/her method.</p>
+<p>An attached pdf document titled 'categorized_questions.pdf' contains the entire dataset classified into Comprehension and Curiosity type questions, as well as into fields of science they belong to. Another file, titled data.tsv contains the same labelled data in a format that's easily readable by machine learning libraries such as pandas, which makes it easy to work with datasets. We can load up this file to get some insight into our newly classified data.</p>
 
 </div>
 </div>
@@ -11822,10 +11822,10 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11838,7 +11838,7 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[96]:</div>
 
 
 
@@ -11894,6 +11894,36 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
     <tr>
       <th>4</th>
       <td>Where will the star fall after its period is o...</td>
+      <td>Curiosity</td>
+      <td>Astronomy</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>How the world become? (i.e. How was the univer...</td>
+      <td>Curiosity</td>
+      <td>Astronomy</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>So many universes are there so are there peopl...</td>
+      <td>Curiosity</td>
+      <td>Astronomy</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Is there anything to control a black hole?</td>
+      <td>Curiosity</td>
+      <td>Astronomy</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Do aliens exist?</td>
+      <td>Curiosity</td>
+      <td>Astronomy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>As we are on the Earth. Are there any other pl...</td>
       <td>Curiosity</td>
       <td>Astronomy</td>
     </tr>
@@ -11991,7 +12021,7 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
 <span class="c1"># removing stopwords like &#39;the&#39;, &#39;a&#39; etc</span>
 <span class="c1"># and stemming, which converts words like &#39;rained&#39;, &#39;raining&#39; etc</span>
 <span class="c1"># to their root &#39;rain&#39;</span>
-<span class="c1"># import the packages that will help us do this efficiently</span>
+<span class="c1"># import the packages that will do this efficiently</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="k">import</span> <span class="n">stopwords</span>
 <span class="kn">from</span> <span class="nn">nltk.stem.porter</span> <span class="k">import</span> <span class="n">PorterStemmer</span>
@@ -12023,7 +12053,7 @@ Residential schools, of classes VII to IX to the outreach volunteers of TIFR. Th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># save the text into a corpus of cleaned data</span>
@@ -12181,16 +12211,16 @@ sun uniqu seen everywher earth </pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I picked the Naive-Bayes classification algorithm to build the classifier because it is the most widely used classificatin algorithm for sentiment analysis and is better suited to work with when the sample size is small, as opposed to the other Decision-Tree classifier that tends to overfit to the data and has poor performance with small samples.</p>
+<p>I picked the Naive-Bayes classification algorithm to build the classifier because it is the most widely used classificatin algorithm for sentiment analysis and is better suited to work with when the sample size is small, as opposed to the Decision-Tree classifier that tends to overfit to the data and has poor performance with small samples.</p>
 <p>The classifier did not do a good job of classifying our test data, as indicated by an accuracy score of 50%. There could be a number of reasons for the poor performance of our algorithm, most relevant of which is the tiny size of our training set. A sample size of 100 is very small when working with data such as science questions that can have a very high order of variation. With a bigger sample of labelled data, we might be able to achieve a better accuracy score. A bigger sample size will enable the classifier to better understand the corelations between the keywords in a question and it's label. For example, our sample did not have many instances of questions labelled 'Geology', therefore the classifier will have lower accuracy when trying to classify 'Geology' type questions. A larger dataset could correct this to some degree.</p>
-<p>To test the performance of our classifier on completely new data, I've created a test dataset with ten randomly picked questions from the student questions repository and labelled them by hand, just to have a value to measure the accuracy of classifier against. The classifier is already trained on the previous data and has no knowledge of the labels on the new data. It will read the questions in the new test dataset and predict the field of science the question belongs to.</p>
+<p>To test the performance of our classifier on completely new data, I've created a test dataset from the student questions repository and labelled them by hand, just to have a value to measure the accuracy of classifier against. The classifier is already trained on the previous data and has no knowledge of the labels on the new data. It will read the questions in the new test dataset and try to predict the field of science the question belongs to.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># importing the test dataset</span>
@@ -12199,7 +12229,7 @@ sun uniqu seen everywher earth </pre>
 <span class="c1"># perform text pre-processing</span>
 <span class="n">test_corpus</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">):</span>
     
     <span class="n">question</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z]&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">[</span><span class="s1">&#39;Question&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
     
@@ -12223,21 +12253,18 @@ sun uniqu seen everywher earth </pre>
 <span class="c1"># making the predictions using the classifier</span>
 <span class="n">predicted_labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_questions</span><span class="p">)</span>
 
-<span class="c1"># calculate the test accuracy score</span>
-<span class="c1">#test_accuracy_score = accuracy_score(y_test, y_pred)</span>
-
-<span class="c1"># create a pandas dataframe to better arrange and display the results</span>
-<span class="n">test_dataframe_data</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="n">data_row</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">data_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">[</span><span class="s1">&#39;Question&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">data_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">[</span><span class="s1">&#39;Field&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">data_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted_labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">test_dataframe_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_row</span><span class="p">)</span>
+<span class="c1"># store the predicted labels for easier analysis</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;predictions.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     
-<span class="n">test_dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">test_dataframe_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">,</span> <span class="s1">&#39;Label (Manual)&#39;</span><span class="p">,</span> <span class="s1">&#39;Label (Classifier)&#39;</span><span class="p">])</span>
-<span class="n">test_dataframe</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Questions</span><span class="se">\t</span><span class="s2">Label (Manual)</span><span class="se">\t</span><span class="s2">Label (Classifier)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">):</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">[</span><span class="s1">&#39;Question&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">test_dataset</span><span class="p">[</span><span class="s1">&#39;Field&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">predicted_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+<span class="c1"># display the predictions for analysis and verification</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;predictions.tsv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">predictions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12250,7 +12277,7 @@ sun uniqu seen everywher earth </pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[93]:</div>
+<div class="prompt output_prompt">Out[103]:</div>
 
 
 
@@ -12349,15 +12376,6 @@ sun uniqu seen everywher earth </pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The classifier has done a good job of classifying the new data by correctly labelling 7 out of 10 questions correctly.</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
